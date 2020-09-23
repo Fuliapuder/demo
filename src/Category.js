@@ -21,12 +21,43 @@ export default class Category extends Component {
         { headerName: "Adı", field: "ad" },
         { headerName: "Soyadı", field: "soyad" },
       ],
-      columnDefs3: [{ headerName: "Branşlar", field: "bransAdi" }],
+      columnDefs4: [{ headerName: "Branşlar", field: "bransAdi" }],
 
-      columnDefs4: [
-        { headerName: "öğrenci", field: "ogrenciRef" },
-        { headerName: "ürün", field: "urunRef" },
+      columnDefs3: [
+        { headerName: "öğrenci", field: "ogrenciRef.ad" },
+        { headerName: "ürün", field: "urunRef.urunAdi" },
         { headerName: "tarih", field: "tarih" },
+      ],
+      columnDefs5: [
+        { headerName: "Ad", field: "ad" },
+        { headerName: "Soyad", field: "soyad" },
+        { headerName: "Telefon", field: "tel" },
+      ],
+      columnDefs6: [
+        { headerName: "Şube", field: "sube" },
+        { headerName: "Sınıf", field: "sinif" },
+        
+      ],
+      columnDefs7: [
+        { headerName: "Ürün Adı", field: "urunAdi" },
+        { headerName: "Birim Fiyatı", field: "fiyat" },
+        
+      ],
+      columnDefs8: [
+        { headerName: "Gün", field: "gun" },
+        { headerName: "Öğretmen Adı", field: "ogretmen_ref1.ad" },
+        { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
+        { headerName: "Öğretmen Adı", field: "ogretmen_ref2.ad" },
+        { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
+        { headerName: "Öğretmen Adı", field: "ogretmen_ref3.ad" },
+        { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
+        { headerName: "Öğretmen Adı", field: "ogretmen_ref4.ad" },
+        { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
+        { headerName: "Öğretmen Adı", field: "ogretmen_ref5.ad" },
+        { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
+        { headerName: "Öğretmen Adı", field: "ogretmen_ref6.ad" },
+        { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
+        
       ],
 
       rowData: [],
@@ -112,6 +143,86 @@ export default class Category extends Component {
       );
     }
   };
+  apiCallVeliler = async () => {
+    this.setState({ temporary: "isVeliler" });
+    try {
+      const response = axios({
+        method: "get",
+        url: "http://localhost:8080/veli/listele",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+        data: null,
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+      this.setState({ isBrans: false }, () =>
+        console.log("False mu? " + this.state.isveliler)
+      );
+    }
+  };
+  apiCallSiniflar = async () => {
+    this.setState({ temporary: "isSiniflar" });
+    try {
+      const response = axios({
+        method: "get",
+        url: "http://localhost:8080/sinif/listele",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+        data: null,
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+      this.setState({ isBrans: false }, () =>
+        console.log("False mu? " + this.state.isSiniflar)
+      );
+    }
+  };
+  apiCallUrunler = async () => {
+    this.setState({ temporary: "isUrunler" });
+    try {
+      const response = axios({
+        method: "get",
+        url: "http://localhost:8080/urunler/listele",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+        data: null,
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+      this.setState({ isBrans: false }, () =>
+        console.log("False mu? " + this.state.isUrunler)
+      );
+    }
+  };
+  apiCallDersprogrami = async () => {
+    this.setState({ temporary: "isDersprogrami" });
+    try {
+      const response = axios({
+        method: "get",
+        url: "http://localhost:8080/dersprogrami/listele",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+        data: null,
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+      this.setState({ isBrans: false }, () =>
+        console.log("False mu? " + this.state.isDersprogrami)
+      );
+    }
+  };
 
 
   sonuclarOgrenci = async () => {
@@ -139,6 +250,30 @@ export default class Category extends Component {
     this.setState({ rowData: giderler });
     console.log(giderler);
   };
+  sonuclarVeliler = async () => {
+    const sonuc = await this.apiCallVeliler();
+    const giderler = sonuc.data.data;
+    this.setState({ rowData: giderler });
+    console.log(giderler);
+  };
+  sonuclarSiniflar = async () => {
+    const sonuc = await this.apiCallSiniflar();
+    const giderler = sonuc.data.data;
+    this.setState({ rowData: giderler });
+    console.log(giderler);
+  };
+  sonuclarUrunler = async () => {
+    const sonuc = await this.apiCallUrunler();
+    const giderler = sonuc.data.data;
+    this.setState({ rowData: giderler });
+    console.log(giderler);
+  };
+  sonuclarDersprogrami = async () => {
+    const sonuc = await this.apiCallDersprogrami();
+    const giderler = sonuc.data.data;
+    this.setState({ rowData: giderler });
+    console.log(giderler);
+  };
 
   render() {
     return (
@@ -156,16 +291,16 @@ export default class Category extends Component {
           <button className="buton" onClick={this.sonuclarBrans}>
             Branşlar
           </button>
-          <button className="buton" onClick={this.sonuclar}>
+          <button className="buton" onClick={this.sonuclarVeliler}>
             Veliler
           </button>
-          <button className="buton" onClick={this.sonuclar}>
+          <button className="buton" onClick={this.sonuclarSiniflar}>
             Sınıflar
           </button>
-          <button className="buton" onClick={this.sonuclar}>
+          <button className="buton" onClick={this.sonuclarUrunler}>
             Ürünler
           </button>
-          <button className="buton" onClick={this.sonuclar}>
+          <button className="buton" onClick={this.sonuclarDersprogrami}>
             Ders Programları
           </button>
         </div>
@@ -188,13 +323,37 @@ export default class Category extends Component {
           )}
           {this.state.temporary === "isKantingideri" && (
             <AgGridReact
-              columnDefs={this.state.columnDefs4}
+              columnDefs={this.state.columnDefs3}
               rowData={this.state.rowData}
             />
           )}
           {this.state.temporary === "isBrans" && (
             <AgGridReact
-              columnDefs={this.state.columnDefs3}
+              columnDefs={this.state.columnDefs4}
+              rowData={this.state.rowData}
+            />
+          )}
+          {this.state.temporary === "isVeliler" && (
+            <AgGridReact
+              columnDefs={this.state.columnDefs5}
+              rowData={this.state.rowData}
+            />
+          )}
+          {this.state.temporary === "isSiniflar" && (
+            <AgGridReact
+              columnDefs={this.state.columnDefs6}
+              rowData={this.state.rowData}
+            />
+          )}
+          {this.state.temporary === "isUrunler" && (
+            <AgGridReact
+              columnDefs={this.state.columnDefs7}
+              rowData={this.state.rowData}
+            />
+          )}
+          {this.state.temporary === "isDersprogrami" && (
+            <AgGridReact
+              columnDefs={this.state.columnDefs8}
               rowData={this.state.rowData}
             />
           )}
