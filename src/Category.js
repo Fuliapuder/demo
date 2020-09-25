@@ -4,6 +4,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import "./Category.css";
+import* as moment from 'moment';
 
 export default class Category extends Component {
   constructor(props) {
@@ -26,7 +27,15 @@ export default class Category extends Component {
       columnDefs3: [
         { headerName: "öğrenci", field: "ogrenciRef.ad" },
         { headerName: "ürün", field: "urunRef.urunAdi" },
-        { headerName: "tarih", field: "tarih" },
+        {
+          headerName: 'Tarih',
+          field: 'tarih',
+          minWidth: 150,
+          maxWidth: 150,
+          valueFormatter: function (params) {
+              return moment(params.value).format('DD-MM-YYYY');
+          },
+      },
       ],
       columnDefs5: [
         { headerName: "Ad", field: "ad" },
@@ -44,7 +53,15 @@ export default class Category extends Component {
         
       ],
       columnDefs8: [
-        { headerName: "Gün", field: "gun" },
+        {
+          headerName: 'Gün',
+          field: 'gun',
+          minWidth: 150,
+          maxWidth: 150,
+          valueFormatter: function (params) {
+              return moment(params.value).format('DD-MM-YYYY');
+          },
+      },
         { headerName: "Öğretmen Adı", field: "ogretmen_ref1.ad" },
         { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
         { headerName: "Öğretmen Adı", field: "ogretmen_ref2.ad" },
