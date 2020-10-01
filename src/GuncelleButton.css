@@ -1,0 +1,14 @@
+.guncellebutton {
+    border:black;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 0px;
+    color:black;
+    padding: 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background-color:yellow;
+  }

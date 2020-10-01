@@ -1,7 +1,7 @@
 import React from "react";
 import Category from "./Category";
 import Navi from "./Navi";
-import Product from "./Product";
+
 import { Container, Row } from "reactstrap";
 function App() {
   return (

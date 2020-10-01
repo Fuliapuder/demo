@@ -4,64 +4,82 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import "./Category.css";
-import* as moment from 'moment';
+import * as moment from "moment";
+import DeleteButton from "./DeleteButton";
+import "./DeleteButton.css";
+import GuncelleButton from "./GuncelleButton";
+import "./GuncelleButton.css";
 
 export default class Category extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      kantinGiderleri: [],
+      liste: [],
       columnDefs: [
         { headerName: "T.C. Kimlik Numarası", field: "tc" },
         { headerName: "Adı", field: "ad" },
         { headerName: "Soyadı", field: "soyad" },
+        { headerName: "Guncelle", cellRenderer: "guncelleButton" },
+        { headerName: "Delete", cellRenderer: "deleteButton" },
       ],
       columnDefs2: [
         { headerName: "Unvan", field: "unvan" },
         { headerName: "Adı", field: "ad" },
         { headerName: "Soyadı", field: "soyad" },
+        { headerName: "Guncelle", cellRenderer: "guncelleButton" },
+        { headerName: "Delete", cellRenderer: "deleteButton" },
       ],
-      columnDefs4: [{ headerName: "Branşlar", field: "bransAdi" }],
+      columnDefs4: [
+        { headerName: "Branşlar", field: "bransAdi" },
+        { headerName: "Guncelle", cellRenderer: "guncelleButton" },
+        { headerName: "Delete", cellRenderer: "deleteButton" },
+      ],
 
       columnDefs3: [
         { headerName: "öğrenci", field: "ogrenciRef.ad" },
         { headerName: "ürün", field: "urunRef.urunAdi" },
         {
-          headerName: 'Tarih',
-          field: 'tarih',
+          headerName: "Tarih",
+          field: "tarih",
           minWidth: 150,
           maxWidth: 150,
           valueFormatter: function (params) {
-              return moment(params.value).format('DD-MM-YYYY');
+            return moment(params.value).format("DD-MM-YYYY");
           },
-      },
+        },
+        { headerName: "Guncelle", cellRenderer: "guncelleButton" },
+        { headerName: "Delete", cellRenderer: "deleteButton" },
       ],
       columnDefs5: [
         { headerName: "Ad", field: "ad" },
         { headerName: "Soyad", field: "soyad" },
         { headerName: "Telefon", field: "tel" },
+        { headerName: "Guncelle", cellRenderer: "guncelleButton" },
+        { headerName: "Delete", cellRenderer: "deleteButton" },
       ],
       columnDefs6: [
         { headerName: "Şube", field: "sube" },
         { headerName: "Sınıf", field: "sinif" },
-        
+        { headerName: "Guncelle", cellRenderer: "guncelleButton" },
+        { headerName: "Delete", cellRenderer: "deleteButton" },
       ],
       columnDefs7: [
         { headerName: "Ürün Adı", field: "urunAdi" },
         { headerName: "Birim Fiyatı", field: "fiyat" },
-        
+        { headerName: "Guncelle", cellRenderer: "guncelleButton" },
+        { headerName: "Delete", cellRenderer: "deleteButton" },
       ],
       columnDefs8: [
         {
-          headerName: 'Gün',
-          field: 'gun',
+          headerName: "Gün",
+          field: "gun",
           minWidth: 150,
           maxWidth: 150,
           valueFormatter: function (params) {
-              return moment(params.value).format('DD-MM-YYYY');
+            return moment(params.value).format("DD-MM-YYYY");
           },
-      },
+        },
         { headerName: "Öğretmen Adı", field: "ogretmen_ref1.ad" },
         { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
         { headerName: "Öğretmen Adı", field: "ogretmen_ref2.ad" },
@@ -74,7 +92,8 @@ export default class Category extends Component {
         { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
         { headerName: "Öğretmen Adı", field: "ogretmen_ref6.ad" },
         { headerName: "Öğretmen Soyadı", field: "ogretmen_ref1.soyad" },
-        
+        { headerName: "Guncelle", cellRenderer: "guncelleButton" },
+        { headerName: "Delete", cellRenderer: "deleteButton" },
       ],
 
       rowData: [],
@@ -241,7 +260,6 @@ export default class Category extends Component {
     }
   };
 
-
   sonuclarOgrenci = async () => {
     const sonuc = await this.apiCall();
     const giderler = sonuc.data.data;
@@ -329,6 +347,7 @@ export default class Category extends Component {
             <AgGridReact
               columnDefs={this.state.columnDefs}
               rowData={this.state.rowData}
+              frameworkComponents={{guncelleButton:GuncelleButton, deleteButton: DeleteButton }}
             />
           )}
 
@@ -336,45 +355,51 @@ export default class Category extends Component {
             <AgGridReact
               columnDefs={this.state.columnDefs2}
               rowData={this.state.rowData}
+              frameworkComponents={{ guncelleButton:GuncelleButton,deleteButton: DeleteButton }}
             />
           )}
           {this.state.temporary === "isKantingideri" && (
             <AgGridReact
               columnDefs={this.state.columnDefs3}
               rowData={this.state.rowData}
+              frameworkComponents={{ guncelleButton:GuncelleButton,deleteButton: DeleteButton }}
             />
           )}
           {this.state.temporary === "isBrans" && (
             <AgGridReact
               columnDefs={this.state.columnDefs4}
               rowData={this.state.rowData}
+              frameworkComponents={{ guncelleButton:GuncelleButton,deleteButton: DeleteButton }}
             />
           )}
           {this.state.temporary === "isVeliler" && (
             <AgGridReact
               columnDefs={this.state.columnDefs5}
               rowData={this.state.rowData}
+              frameworkComponents={{ guncelleButton:GuncelleButton,deleteButton: DeleteButton }}
             />
           )}
           {this.state.temporary === "isSiniflar" && (
             <AgGridReact
               columnDefs={this.state.columnDefs6}
               rowData={this.state.rowData}
+              frameworkComponents={{ guncelleButton:GuncelleButton,deleteButton: DeleteButton }}
             />
           )}
           {this.state.temporary === "isUrunler" && (
             <AgGridReact
               columnDefs={this.state.columnDefs7}
               rowData={this.state.rowData}
+              frameworkComponents={{ guncelleButton:GuncelleButton,deleteButton: DeleteButton }}
             />
           )}
           {this.state.temporary === "isDersprogrami" && (
             <AgGridReact
               columnDefs={this.state.columnDefs8}
               rowData={this.state.rowData}
+              frameworkComponents={{guncelleButton:GuncelleButton, deleteButton: DeleteButton }}
             />
           )}
-
         </div>
       </div>
     );
