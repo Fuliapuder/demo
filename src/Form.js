@@ -36,7 +36,10 @@ export default class Form extends Component {
           />
         </div>
         <div className="input">
-          <TextField name="ad" id="standard-basic" label="Adı" value={ad} />
+          <TextField name="ad" id="standard-basic" label="Adı" value={ad} 
+      onChange={this.changeHandler}
+          
+          />
         </div>
         <div className="input">
           <TextField
@@ -44,6 +47,7 @@ export default class Form extends Component {
             id="standard-basic"
             label="Soyadı"
             value={soyad}
+            onChange={this.changeHandler}
           />
         </div>
       </div>

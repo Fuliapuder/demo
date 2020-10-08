@@ -9,7 +9,7 @@ import DeleteButton from "./DeleteButton";
 import "./DeleteButton.css";
 import GuncelleButton from "./GuncelleButton";
 import "./GuncelleButton.css";
-import Form from "./Form";
+
 import "./Form.css";
 
 export default class Category extends Component {
