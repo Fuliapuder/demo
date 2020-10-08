@@ -1,0 +1,21 @@
+.eklearti {
+  color: white;
+  font-size: 60px;
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  font-family: fantasy;
+}
+
+.eklebutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  cursor: pointer;
+  border-radius: 25px;
+  width: 60px;
+  height: 60px;
+  border: black;
+  margin: 70px 70px;
+}
