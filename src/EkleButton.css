@@ -19,3 +19,9 @@
   border: black;
   margin: 70px 70px;
 }
+
+.addContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

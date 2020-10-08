@@ -1,16 +1,52 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import React, { Component } from "react";
+import TextField from "@material-ui/core/TextField";
 import "./Form.css";
 
-export default function Form() {
-  
+export default class Form extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <form className='forms' noValidate autoComplete="off">
-      <TextField id="standard-basic" label="TCK" />
-      <TextField id="standard-basic" label="Adı" />
-      <TextField id="standard-basic" label="Soyadı" />
-     
-    </form>
-  );
+    this.state = {
+      ad: "",
+      soyad: "",
+      tc: "",
+    };
+  }
+
+  changeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  apply = () => {
+    console.log(this.state.tc);
+  };
+
+  render() {
+    const { ad, soyad, tc } = this.state;
+
+    return (
+      <div className="forms">
+        <div className="input">
+          <TextField
+            name="tc"
+            id="standard-basic"
+            label="TCK"
+            value={tc}
+            onChange={this.changeHandler}
+          />
+        </div>
+        <div className="input">
+          <TextField name="ad" id="standard-basic" label="Adı" value={ad} />
+        </div>
+        <div className="input">
+          <TextField
+            name="soyad"
+            id="standard-basic"
+            label="Soyadı"
+            value={soyad}
+          />
+        </div>
+      </div>
+    );
+  }
 }

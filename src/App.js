@@ -3,6 +3,7 @@ import Category from "./Category";
 import Navi from "./Navi";
 import EkleButton from "./EkleButton";
 import { Container, Row } from "reactstrap";
+
 function App() {
   return (
     <div>
@@ -11,7 +12,7 @@ function App() {
           <Navi />
         </Row>
         <Row>
-          <EkleButton/>
+          <EkleButton />
         </Row>
         <Row>
           <Category />

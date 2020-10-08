@@ -341,94 +341,94 @@ export default class Category extends Component {
             Ders Programları
           </button>
         </div>
-        <div>
-          <Form />
-        </div>
-        <div
-          className="ag-theme-alpine"
-          style={{ height: "600px", width: "85%" }}
-        >
-          {this.state.temporary === "isStudent" && (
-            <AgGridReact
-              columnDefs={this.state.columnDefs}
-              rowData={this.state.rowData}
-              frameworkComponents={{
-                guncelleButton: GuncelleButton,
-                deleteButton: DeleteButton,
-              }}
-            />
-          )}
+        <div className="rightContainer">
+          
+          <div
+            className="ag-theme-alpine"
+            style={{ height: "600px", width: "100%" }}
+          >
+            {this.state.temporary === "isStudent" && (
+              <AgGridReact
+                columnDefs={this.state.columnDefs}
+                rowData={this.state.rowData}
+                frameworkComponents={{
+                  guncelleButton: GuncelleButton,
+                  deleteButton: DeleteButton,
+                }}
+              />
+            )}
 
-          {this.state.temporary === "isTeacher" && (
-            <AgGridReact
-              columnDefs={this.state.columnDefs2}
-              rowData={this.state.rowData}
-              frameworkComponents={{
-                guncelleButton: GuncelleButton,
-                deleteButton: DeleteButton,
-              }}
-            />
-          )}
-          {this.state.temporary === "isKantingideri" && (
-            <AgGridReact
-              columnDefs={this.state.columnDefs3}
-              rowData={this.state.rowData}
-              frameworkComponents={{
-                guncelleButton: GuncelleButton,
-                deleteButton: DeleteButton,
-              }}
-            />
-          )}
-          {this.state.temporary === "isBrans" && (
-            <AgGridReact
-              columnDefs={this.state.columnDefs4}
-              rowData={this.state.rowData}
-              frameworkComponents={{
-                guncelleButton: GuncelleButton,
-                deleteButton: DeleteButton,
-              }}
-            />
-          )}
-          {this.state.temporary === "isVeliler" && (
-            <AgGridReact
-              columnDefs={this.state.columnDefs5}
-              rowData={this.state.rowData}
-              frameworkComponents={{
-                guncelleButton: GuncelleButton,
-                deleteButton: DeleteButton,
-              }}
-            />
-          )}
-          {this.state.temporary === "isSiniflar" && (
-            <AgGridReact
-              columnDefs={this.state.columnDefs6}
-              rowData={this.state.rowData}
-              frameworkComponents={{
-                guncelleButton: GuncelleButton,
-                deleteButton: DeleteButton,
-              }}
-            />
-          )}
-          {this.state.temporary === "isUrunler" && (
-            <AgGridReact
-              columnDefs={this.state.columnDefs7}
-              rowData={this.state.rowData}
-              frameworkComponents={{
-                guncelleButton: GuncelleButton,
-                deleteButton: DeleteButton,
-              }}
-            />
-          )}
-          {this.state.temporary === "isDersprogrami" && (
-            <AgGridReact
-              columnDefs={this.state.columnDefs8}
-              rowData={this.state.rowData}
-              frameworkComponents={{
-                guncelleButton: GuncelleButton,
-                deleteButton: DeleteButton,
-              }}
-            />
-          )}
+            {this.state.temporary === "isTeacher" && (
+              <AgGridReact
+                columnDefs={this.state.columnDefs2}
+                rowData={this.state.rowData}
+                frameworkComponents={{
+                  guncelleButton: GuncelleButton,
+                  deleteButton: DeleteButton,
+                }}
+              />
+            )}
+            {this.state.temporary === "isKantingideri" && (
+              <AgGridReact
+                columnDefs={this.state.columnDefs3}
+                rowData={this.state.rowData}
+                frameworkComponents={{
+                  guncelleButton: GuncelleButton,
+                  deleteButton: DeleteButton,
+                }}
+              />
+            )}
+            {this.state.temporary === "isBrans" && (
+              <AgGridReact
+                columnDefs={this.state.columnDefs4}
+                rowData={this.state.rowData}
+                frameworkComponents={{
+                  guncelleButton: GuncelleButton,
+                  deleteButton: DeleteButton,
+                }}
+              />
+            )}
+            {this.state.temporary === "isVeliler" && (
+              <AgGridReact
+                columnDefs={this.state.columnDefs5}
+                rowData={this.state.rowData}
+                frameworkComponents={{
+                  guncelleButton: GuncelleButton,
+                  deleteButton: DeleteButton,
+                }}
+              />
+            )}
+            {this.state.temporary === "isSiniflar" && (
+              <AgGridReact
+                columnDefs={this.state.columnDefs6}
+                rowData={this.state.rowData}
+                frameworkComponents={{
+                  guncelleButton: GuncelleButton,
+                  deleteButton: DeleteButton,
+                }}
+              />
+            )}
+            {this.state.temporary === "isUrunler" && (
+              <AgGridReact
+                columnDefs={this.state.columnDefs7}
+                rowData={this.state.rowData}
+                frameworkComponents={{
+                  guncelleButton: GuncelleButton,
+                  deleteButton: DeleteButton,
+                }}
+              />
+            )}
+            {this.state.temporary === "isDersprogrami" && (
+              <AgGridReact
+                columnDefs={this.state.columnDefs8}
+                rowData={this.state.rowData}
+                frameworkComponents={{
+                  guncelleButton: GuncelleButton,
+                  deleteButton: DeleteButton,
+                }}
+              />
+            )}
+          </div>
         </div>
       </div>
     );
